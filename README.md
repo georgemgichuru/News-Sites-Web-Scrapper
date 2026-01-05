@@ -192,12 +192,18 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## 📸 Screenshots
 
-**Your Name**
-- Portfolio: [yourwebsite.com](https://yourwebsite.com)
-- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- Upwork: [upwork.com/freelancers/yourprofile](https://upwork.com/freelancers/yourprofile)
+Here are some screenshots of the application in action:
+
+![Screenshot 1](docs/images/screenshot_1.png)
+*Application Interface Overview*
+
+![Screenshot 2](docs/images/screenshot_2.png)
+*Scraping Process in Action*
+
+![Screenshot 3](docs/images/screenshot_3.png)
+*Data Output Example*
 
 ---
 
