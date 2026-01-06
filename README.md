@@ -1,210 +1,137 @@
-# 📰 Multi-Region News Aggregator & Web Scraper
+# 📰 News Scraper
 
-A professional-grade, scalable web scraping solution for aggregating news from major publications in **Kenya** and the **USA**. Built with Python, featuring robust error handling, rate limiting, data validation, and multiple export formats.
+A simple, single-file news scraper for Kenya and USA news sources. Fast, lightweight, and easy to use.
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Lines](https://img.shields.io/badge/Lines-450-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Maintained](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)
 
-## 🌟 Features
+## ⚡ Features
 
-- **Multi-Region Support**: Scrapes news from 10+ major news outlets across Kenya and USA
-- **Smart Rate Limiting**: Respects website policies with configurable delays
-- **Robust Error Handling**: Retry logic, timeout handling, and graceful degradation
-- **Multiple Export Formats**: JSON, CSV, SQLite database, and Excel
-- **Content Extraction**: Headlines, article summaries, authors, timestamps, and categories
-- **Deduplication**: Intelligent duplicate detection to avoid repeated articles
-- **Async Support**: High-performance asynchronous scraping for faster results
-- **Logging & Monitoring**: Comprehensive logging for debugging and monitoring
-- **Scheduled Scraping**: Built-in scheduler for automated news collection
-- **API Ready**: RESTful API endpoint for integration with other applications
+- ✅ **Single-file design** - ~450 lines, no complex structure
+- ✅ **13 news sources** - Kenya & USA outlets
+- ✅ **RSS-first approach** - Fast & reliable
+- ✅ **3 export formats** - JSON, CSV, SQLite
+- ✅ **Smart rate limiting** - Respectful to servers
+- ✅ **Auto retries** - Handles timeouts gracefully
+- ✅ **User-agent rotation** - Avoids blocking
+- ✅ **Detailed logging** - Full audit trail
 
-## 📊 Supported News Sources
+## 📰 Supported Sources
 
-### 🇰🇪 Kenya
-| Source | URL | Categories |
-|--------|-----|------------|
-| Nation Africa | nation.africa | General, Business, Sports |
-| The Standard | standardmedia.co.ke | General, Politics, Entertainment |
-| Capital FM | capitalfm.co.ke | Business, Lifestyle |
-| Citizen Digital | citizen.digital | General, News |
-| Business Daily | businessdailyafrica.com | Business, Markets |
-| The Star | the-star.co.ke | General, Politics |
+**Kenya (6):** Nation Africa, The Standard, Capital FM, Citizen Digital, Business Daily, The Star Kenya
 
-### 🇺🇸 USA
-| Source | URL | Categories |
-|--------|-----|------------|
-| CNN | cnn.com | General, Politics, World |
-| Fox News | foxnews.com | General, Politics |
-| NBC News | nbcnews.com | General, Business |
-| CBS News | cbsnews.com | General, Entertainment |
-| ABC News | abcnews.go.com | General, Politics |
-| NPR | npr.org | General, Culture |
+**USA (7):** CNN, Fox News, NBC News, CBS News, ABC News, NPR
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.9 or higher
-- pip (Python package manager)
-
-### Installation
-
+### 1. Install Dependencies
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/news-scraper.git
-cd news-scraper
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
 ```
 
-### Basic Usage
-
-```python
-from src.scraper import NewsScraper
-
-# Initialize scraper
-scraper = NewsScraper()
-
-# Scrape all sources
-articles = scraper.scrape_all()
-
-# Scrape specific region
-kenya_news = scraper.scrape_region('kenya')
-usa_news = scraper.scrape_region('usa')
-
-# Export to different formats
-scraper.export_to_json('news_data.json')
-scraper.export_to_csv('news_data.csv')
-scraper.export_to_sqlite('news_data.db')
-```
-
-### Command Line Interface
-
+### 2. Run Your First Scrape
 ```bash
-# Scrape all sources
-python main.py --all
-
-# Scrape specific region
-python main.py --region kenya
-python main.py --region usa
-
-# Scrape specific source
-python main.py --source "Nation Africa"
-
-# Export to specific format
-python main.py --all --format json --output news.json
-
-# Run with scheduler (every 6 hours)
-python main.py --schedule 6
+python news_scraper_standalone.py --all --format json
 ```
 
-## 📁 Project Structure
+Done! 🎉
 
+## � Usage
+
+### List All Sources
+```bash
+python news_scraper_standalone.py --list
 ```
-news-scraper/
-├── src/
-│   ├── __init__.py
-│   ├── scraper.py          # Main scraper class
-│   ├── sources/
-│   │   ├── __init__.py
-│   │   ├── base.py         # Base scraper class
-│   │   ├── kenya.py        # Kenya news sources
-│   │   └── usa.py          # USA news sources
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── article.py      # Article data model
-│   ├── exporters/
-│   │   ├── __init__.py
-│   │   ├── json_exporter.py
-│   │   ├── csv_exporter.py
-│   │   └── sqlite_exporter.py
-│   └── utils/
-│       ├── __init__.py
-│       ├── rate_limiter.py
-│       ├── validators.py
-│       └── logger.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_scraper.py
-│   └── test_exporters.py
-├── config/
-│   └── settings.py
-├── data/                    # Scraped data output
-├── logs/                    # Application logs
-├── main.py                  # CLI entry point
-├── api.py                   # REST API server
-├── requirements.txt
-├── README.md
-└── LICENSE
+
+### Scrape by Region
+```bash
+python news_scraper_standalone.py --region kenya --format json
+python news_scraper_standalone.py --region usa --format csv
+```
+
+### Scrape Specific Source
+```bash
+python news_scraper_standalone.py --source "CNN" --format json
+```
+
+### Export All Formats
+```bash
+python news_scraper_standalone.py --all --format all
+```
+
+### Custom Output
+```bash
+python news_scraper_standalone.py --all --format json --output my_news.json
+```
+
+### Debug Modes
+```bash
+python news_scraper_standalone.py --all --verbose    # Debug info
+python news_scraper_standalone.py --all --quiet      # Errors only
 ```
 
 ## ⚙️ Configuration
 
-Edit `config/settings.py` to customize:
+Edit `SETTINGS` in the script:
 
 ```python
 SETTINGS = {
-    'rate_limit_delay': 2,      # Seconds between requests
-    'timeout': 30,               # Request timeout
-    'max_retries': 3,            # Retry attempts
-    'user_agent': 'NewsBot/1.0',
-    'output_dir': 'data/',
-    'log_level': 'INFO'
+    'rate_limit_delay': 2,          # Delay between requests (seconds)
+    'timeout': 30,                  # Request timeout
+    'max_articles_per_source': 50,  # Articles per source
+    'log_level': 'INFO',            # DEBUG, INFO, WARNING, ERROR
 }
 ```
 
-## 🔌 API Endpoints
+Edit `SOURCES` to add/remove outlets or change RSS feeds.
 
-Start the API server:
-```bash
-python api.py
+## 📊 Output
+
+### JSON
+```json
+{
+  "metadata": {
+    "exported_at": "2026-01-06T14:30:32",
+    "total_articles": 42
+  },
+  "articles": [
+    {
+      "title": "Breaking News",
+      "url": "https://example.com/news",
+      "summary": "Article summary...",
+      "source_name": "CNN",
+      "region": "usa"
+    }
+  ]
+}
 ```
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/scrape` | POST | Trigger scraping job |
-| `/api/articles` | GET | Get all articles |
-| `/api/articles/{region}` | GET | Get articles by region |
-| `/api/sources` | GET | List available sources |
-| `/api/status` | GET | Get scraper status |
+### CSV
+```csv
+title,url,summary,source_name,region
+Breaking News,https://example.com/news,Article summary,CNN,usa
+```
 
-## 📈 Performance
+### SQLite
+```bash
+sqlite3 data/news.db
+SELECT * FROM articles WHERE region = 'kenya';
+```
 
-- Async scraping: ~50 articles/minute
-- Memory efficient: Processes articles in batches
-- SQLite indexing for fast queries
+## 📁 Files
 
-## 🤝 Contributing
+- `news_scraper_standalone.py` - Main script
+- `requirements.txt` - Dependencies
+- `README_STANDALONE.md` - Detailed documentation
+- `data/` - Output directory
+- `logs/scraper.log` - Log file
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests.
+## 🔧 Troubleshooting
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📸 Screenshots
-
-Here are some screenshots of the application in action:
-
-![Screenshot 1](docs/images/screenshot_1.png)
-*Application Interface Overview*
-
-![Screenshot 2](docs/images/screenshot_2.png)
-*Scraping Process in Action*
-
-![Screenshot 3](docs/images/screenshot_3.png)
-*Data Output Example*
-
----
-
-⭐ If you find this project useful, please consider giving it a star!
+| Issue | Solution |
+|-------|----------|
+| Missing modules | `pip install -r requirements.txt` |
+| Connection timeout | Increase `timeout` in SETTINGS |
+| Getting blocked | Increase `rate_limit_delay` |
+| No RSS data | Check feed URL is active |
