@@ -127,7 +127,17 @@ SELECT * FROM articles WHERE region = 'kenya';
 - `data/` - Output directory
 - `logs/scraper.log` - Log file
 
-## 🔧 Troubleshooting
+## � Screenshots
+
+### Scraper Output
+![News Scraper](docs/images/image1.png)
+*Example of scraper running and collecting articles from multiple sources*
+
+### Data Export
+![Data Export](docs/images/image.png)
+*Sample exported data in JSON, CSV, and SQLite formats*
+
+## �🔧 Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
